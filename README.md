@@ -27,16 +27,16 @@ docker-compose up -d
 ┌─────────────────────────────────────────────────────────────────┐
 │                    user-management-service                      │
 │                                                                 │
-│  ┌──────────────┐   ┌──────────────┐   ┌──────────────────┐   │
-│  │ Controller   │ → │   Service    │ → │   Repository     │   │
-│  │ (REST/HTTP)  │   │ (Business    │   │ (Spring Data JPA)│   │
-│  │              │   │  Logic)      │   │                  │   │
-│  └──────────────┘   └──────────────┘   └──────────────────┘   │
+│  ┌──────────────┐   ┌──────────────┐   ┌──────────────────┐     │
+│  │ Controller   │ → │   Service    │ → │   Repository     │     │
+│  │ (REST/HTTP)  │   │ (Business    │   │ (Spring Data JPA)│     │
+│  │              │   │  Logic)      │   │                  │     │
+│  └──────────────┘   └──────────────┘   └──────────────────┘     │
 │         │                  │                      │             │
-│    DTOs + Validation   Events (async)        PostgreSQL        │
-│         │                  │                                   │
-│    GlobalException     RabbitMQ                                │
-│    Handler                                                     │
+│    DTOs + Validation   Events (async)        PostgreSQL         │
+│         │                  │                                    │
+│    GlobalException     RabbitMQ                                 │
+│    Handler                                                      │
 └─────────────────────────────────────────────────────────────────┘
          │                  │
     Keycloak (IAM)     ums.events exchange
@@ -164,7 +164,7 @@ curl -X POST http://localhost:8080/api/v1/users \
 
 | Parameter | Type | Description |
 |-----------|------|-------------|
-| `status`  | `ACTIVE` \| `DISABLED` | Filter by status |
+| `status`  | `ACTIVE` \| `DISABLED` \| `DELETED`| Filter by status |
 | `search`  | string | Free-text search on username, email, nome, cognome |
 | `page`    | int (default: 0) | Page number |
 | `size`    | int (default: 20, max: 100) | Page size |
