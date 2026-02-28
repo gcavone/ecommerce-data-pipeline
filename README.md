@@ -169,7 +169,7 @@ curl -X POST http://localhost:8080/api/v1/users \
 | `page`    | int (default: 0) | Page number |
 | `size`    | int (default: 20, max: 100) | Page size |
 | `sortBy`  | string (default: `createdAt`) | Sort field |
-| `direction` | `ASC` \| `DESC` | Sort direction |
+| `direction` | `ASC` \| `DESC (default: DESC)` | Sort direction |
 
 ---
 
